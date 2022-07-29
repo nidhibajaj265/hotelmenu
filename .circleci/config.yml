@@ -1,0 +1,58 @@
+version: 2.1
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+#      - deployToStage:
+#          requires:
+#            - test
+
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run: ./gradlew bootjar
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - build/
+            - .gradle/
+
+test:
+  docker:
+    -image: circleci/openjdk:8-jdk
+  steps:
+    - checkout
+    - run: ./gradlew test
+    - store_test_results:
+        path: build/test-results/
+
+#deployToStage:
+#  docker:
+#    - image: cimg/base:stable
+#  steps:
+#    - checkout
+#    - setup_remote_docker:
+#        version: 20.10.14
+#    -attach_workspace:
+#        at: ./
+#    - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
+#
+#    -run:
+#      name: Build and push Docker image to Heroku
+#      command: l
+#        set -x
+#        sudo curl https://cli-assets.heroku.com/install.sh | sh
+#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a hotel-menu web
+#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku:cotainer:release -a hotel-menu web
+
+
+
+

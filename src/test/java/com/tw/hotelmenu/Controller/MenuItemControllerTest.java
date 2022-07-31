@@ -41,6 +41,10 @@ class MenuItemControllerTest {
                 .andExpect(jsonPath("$.length()").value(2))
                 .andExpect(jsonPath("$[0].name").value("idli"))
                 .andExpect(jsonPath("$[1].name").value("vada"))
+                .andExpect(jsonPath("$[0].price").value("10.75"))
+                .andExpect(jsonPath("$[1].price").value("11.5"))
+                .andExpect(jsonPath("$[0].type").value("BREAKFAST"))
+                .andExpect(jsonPath("$[1].type").value("LUNCH"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
 

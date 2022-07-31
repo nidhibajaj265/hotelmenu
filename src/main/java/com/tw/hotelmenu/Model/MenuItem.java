@@ -20,6 +20,17 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "price", nullable = false)
+    private double price;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "itemType")
+    private TypeOfMenuItem type;
+
+    public enum TypeOfMenuItem{
+        BREAKFAST,
+        LUNCH,
+        DINNER
+    }
 }

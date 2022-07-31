@@ -40,7 +40,9 @@ class MenuServiceTest {
 
     @Test
     void shouldReturnListofMenuItem(){
-        List<MenuItem> expectedMenuItems = Arrays.asList(MenuItem.builder().name("idli").build(), MenuItem.builder().name("vada").build());
+        List<MenuItem> expectedMenuItems = Arrays.asList(MenuItem.builder().name("idli").price(60.7)
+                        .type(MenuItem.TypeOfMenuItem.BREAKFAST).build(),
+                MenuItem.builder().name("vada").price(45.8).type(MenuItem.TypeOfMenuItem.LUNCH).build());
 
         when(menuItemRepository.findAll()).thenReturn(expectedMenuItems);
 
@@ -49,6 +51,4 @@ class MenuServiceTest {
         assertEquals(2, menuService.getMenuItems().size());
         assertEquals(expectedMenuItems, actualMenuItems);
     }
-
-
 }

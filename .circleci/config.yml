@@ -4,9 +4,9 @@ workflows:
   build_and_test:
     jobs:
       - build
-#      - test:
-#          requires:
-#          - build
+      - test:
+          requires:
+          - build
 #      - deployToStage:
 #          requires:
 #            - test
@@ -23,26 +23,25 @@ jobs:
           paths:
             - build/
             - .gradle/
+  test:
+    docker:
+        - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run: ./gradlew test
+      - store_test_results:
+         path: build/test-results/
 
-test:
-  docker:
-    -image: circleci/openjdk:8-jdk
-  steps:
-    - checkout
-    - run: ./gradlew test
-    - store_test_results:
-        path: build/test-results/
-
-#deployToStage:
-#  docker:
-#    - image: cimg/base:stable
-#  steps:
-#    - checkout
-#    - setup_remote_docker:
-#        version: 20.10.14
-#    -attach_workspace:
-#        at: ./
-#    - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
+# deployToStage:
+#   docker:
+#        - image: cimg/base:stable
+#   steps:
+#      - checkout
+#      - setup_remote_docker:
+#           version: 20.10.14
+#       - attach_workspace:
+#           at: ./
+#       - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
 #
 #    -run:
 #      name: Build and push Docker image to Heroku

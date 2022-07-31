@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.*;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+//@SpringBootTest
 class MenuServiceTest {
 
     @Mock
@@ -28,7 +26,6 @@ class MenuServiceTest {
     @BeforeEach
     void Setup()
     {
-
         menuService = new MenuService(menuItemRepository);
     }
 

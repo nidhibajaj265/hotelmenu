@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Builder
+@Table (name = "menu_items")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -21,5 +22,4 @@ public class MenuItem {
 
     @Column(nullable = false)
     private String name;
-
 }

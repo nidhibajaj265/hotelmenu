@@ -15,19 +15,19 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-      environment:
+        environment:
           TEST_DATABASE_URL: jdbc:postgresql://localhost:5432/postgres
-          auth:
-            username: nidhibajaj
-            password: nidhibajaj
+        auth:
+          username: nidhibajaj
+          password: nidhibajaj
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: nidhibajaj
-          auth:
-            username: nidhibajaj
-            password: nidhibajaj
     steps:
       - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client
+      - run: whoami
       - run: ./gradlew bootjar
       - persist_to_workspace:
           root: ./

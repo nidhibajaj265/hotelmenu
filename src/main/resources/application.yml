@@ -8,7 +8,6 @@ schema: public
 jpa:
 hibernate:
 ddl-auto: none
-
 flyway:
 schemas: public
 locations: classpath:db/migration

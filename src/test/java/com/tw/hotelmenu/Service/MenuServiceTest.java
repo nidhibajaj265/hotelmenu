@@ -41,8 +41,8 @@ class MenuServiceTest {
     @Test
     void shouldReturnListofMenuItem(){
         List<MenuItem> expectedMenuItems = Arrays.asList(MenuItem.builder().name("idli").price(60.7)
-                        .type(MenuItem.TypeOfMenuItem.BREAKFAST).build(),
-                MenuItem.builder().name("vada").price(45.8).type(MenuItem.TypeOfMenuItem.LUNCH).build());
+                        .type("BREAKFAST").build(),
+                MenuItem.builder().name("vada").price(45.8).type("LUNCH").build());
 
         when(menuItemRepository.findAll()).thenReturn(expectedMenuItems);
 

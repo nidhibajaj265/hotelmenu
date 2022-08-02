@@ -8,23 +8,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Builder
-@Table (name = "menu_items")
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
-
-public class MenuItem {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Table (name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Column(name = "email", nullable = false)
+    private String emailId;
     @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "price", nullable = false)
-    private double price;
-    @Column(name = "item_type", nullable = false)
-    private String type;
-
+    @Column(name = "password", nullable = false)
+    private String password;
 }

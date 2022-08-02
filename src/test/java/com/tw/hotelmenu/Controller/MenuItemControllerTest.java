@@ -32,8 +32,8 @@ class MenuItemControllerTest {
     @Test
     void shouldReturnListOfMenuItems() throws Exception{
         List<MenuItem> expectedMenuItems = Arrays.asList(MenuItem.builder().name("idli").price(10.75d)
-                        .type(MenuItem.TypeOfMenuItem.BREAKFAST).build(),
-                         MenuItem.builder().name("vada").price(11.5d).type(MenuItem.TypeOfMenuItem.LUNCH).build());
+                        .type("BREAKFAST").build(),
+                         MenuItem.builder().name("vada").price(11.5d).type("LUNCH").build());
 
         when(menuService.getMenuItems()).thenReturn(expectedMenuItems);
 

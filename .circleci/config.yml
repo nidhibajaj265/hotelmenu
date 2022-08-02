@@ -15,11 +15,6 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-        environment:
-          TEST_DATABASE__URL: jdbc:postgresql://localhost:5432/postgres
-        auth:
-          username: nidhibajaj
-          password: nidhibajaj
     steps:
       - checkout
       - run: ./gradlew bootjar

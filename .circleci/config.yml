@@ -16,12 +16,12 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
       - image: circleci/postgres:9.4
-        auth:
-          username: nidhibajaj
-          password: nidhibajaj
         environment:
           POSTGRES_USER: nidhibajaj
     steps:
+      - run:
+          name: Waiting for Postgres to be ready
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - checkout
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client

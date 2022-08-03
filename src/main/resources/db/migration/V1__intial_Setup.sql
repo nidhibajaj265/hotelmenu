@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     id int NOT NULL PRIMARY KEY,
     name varchar(100) NOT NULL,
     price double precision NOT NULL,
-    itemType varchar(100) NOT NULL
+    item_type varchar(100) NOT NULL
 );
 
 INSERT INTO menu_items(id, name, price, item_type) VALUES ('1', 'Pooji Bhaji', '120.5', 'BREAKFAST');

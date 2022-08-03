@@ -7,26 +7,16 @@ workflows:
       - test:
           requires:
           - build
-#      - deployToStage:
-#          requires:
-#            - test
+      - deployToStage:
+          requires:
+            - test
 
 jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
-      - image: circleci/postgres:9.4
-        environment:
-          POSTGRES_USER: nidhibajaj
-          POSTGRES_PASSWORD: nidhibajaj
     steps:
-      - run:
-          name: Waiting for Postgres to be ready
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - checkout
-      - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client
-      - run: whoami
       - run: ./gradlew bootjar
       - persist_to_workspace:
           root: ./
@@ -36,42 +26,33 @@ jobs:
   test:
     docker:
         - image: circleci/openjdk:8-jdk
-        - image: circleci/postgres:9.4
-          environment:
-            POSTGRES_USER: nidhibajaj
-            POSTGRES_PASSWORD: nidhibajaj
+        environment:
+          DATABASE_HOST: $(DATABASE_HOST)
     steps:
-      - run:
-          name: Waiting for Postgres to be ready
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-            - checkout
-            - run: sudo apt-get update
-            - run: sudo apt-get install postgresql-client
-            - run: whoami
       - checkout
       - run: ./gradlew test
       - store_test_results:
          path: build/test-results/
 
-# deployToStage:
-#   docker:
-#        - image: cimg/base:stable
-#   steps:
-#      - checkout
-#      - setup_remote_docker:
-#           version: 20.10.14
-#       - attach_workspace:
-#           at: ./
-#       - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
-#
-#    -run:
-#      name: Build and push Docker image to Heroku
-#      command: l
-#        set -x
-#        sudo curl https://cli-assets.heroku.com/install.sh | sh
-#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
-#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a hotel-menu web
-#        HEROKU_API_KEY=${HEROKU_API_KEY} heroku:cotainer:release -a hotel-menu web
+ deployToStage:
+   docker:
+        - image: cimg/base:stable
+   steps:
+      - checkout
+      - setup_remote_docker:
+           version: 20.10.14
+       - attach_workspace:
+           at: ./
+       - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
+
+    -run:
+      name: Build and push Docker image to Heroku
+      command: l
+        set -x
+        sudo curl https://cli-assets.heroku.com/install.sh | sh
+        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+        HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a masalakitchen web
+        HEROKU_API_KEY=${HEROKU_API_KEY} heroku:cotainer:release -a masalakitchen web
 
 
 

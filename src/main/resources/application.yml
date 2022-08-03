@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: nidhibajaj
-    password: nidhibajaj
+    url: postgres://shvginhagwcuru:de0859c2f01f65863be94dd9344549ea55d2e0fb2dc630995ff3f93dac3f012a@ec2-34-235-31-124.compute-1.amazonaws.com:5432/d9df44h6qbcb5p
+    username: shvginhagwcuru
+    password: de0859c2f01f65863be94dd9344549ea55d2e0fb2dc630995ff3f93dac3f012a
     hikari:
       schema: public
   jpa:
@@ -13,4 +13,4 @@ spring:
     locations: classpath:db/migration
 
 server:
-  port: 8080
+  port: $(PORT:8080)

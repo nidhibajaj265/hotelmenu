@@ -9,6 +9,7 @@ spring:
     hibernate:
       ddl-auto: none
   flyway:
+    baselineOnMigrate: true
     schemas: public
     locations: classpath:db/migration
 

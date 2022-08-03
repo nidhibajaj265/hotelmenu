@@ -38,12 +38,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-           version: 20.10.14
+            version: 20.10.14
       - attach_workspace:
-           at: ./
-      - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
+            at: ./
+      - run: docker build Dockerfile . -t hotelmenu
 
-      -run:
+      - run:
           name: Build and push Docker image to Heroku
           command: l
           set -x
@@ -51,7 +51,3 @@ jobs:
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a masalakitchen web
           HEROKU_API_KEY=${HEROKU_API_KEY} heroku:cotainer:release -a masalakitchen web
-
-
-
-

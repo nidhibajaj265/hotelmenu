@@ -41,7 +41,7 @@ jobs:
             version: 20.10.14
       - attach_workspace:
             at: ./
-      - run: docker build -f Dockerfile . -t hotelmenu
+      - run: DOCKER_BUILDKIT=1 docker build -f Dockerfile . -t hotelmenu
 
       - run:
           name: Build and push Docker image to Heroku

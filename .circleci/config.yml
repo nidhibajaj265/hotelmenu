@@ -39,11 +39,11 @@ jobs:
       - checkout
       - setup_remote_docker:
            version: 20.10.14
-       - attach_workspace:
+      - attach_workspace:
            at: ./
-       - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
+      - run: docker build --iidfile image.txt -f Dockerfile . -t hotelmenu
 
-       -run:
+      -run:
           name: Build and push Docker image to Heroku
           command: l
           set -x

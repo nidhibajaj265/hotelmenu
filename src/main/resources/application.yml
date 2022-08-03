@@ -1,12 +1,12 @@
 spring:
   datasource:
 #    driverClassName: org.postgresql.Driver
-#    url: jdbc:postgres://ec2-34-235-31-124.compute-1.amazonaws.com:5432/d9df44h6qbcb5p
-#    username: shvginhagwcuru
-#    password: de0859c2f01f65863be94dd9344549ea55d2e0fb2dc630995ff3f93dac3f012a
-    url: jdbc:postgres://127.0.0.1:5432/postgres
-    username: nidhibajaj
-    password: nidhibajaj
+    url: postgres://ec2-34-235-31-124.compute-1.amazonaws.com:5432/d9df44h6qbcb5p
+    username: shvginhagwcuru
+    password: de0859c2f01f65863be94dd9344549ea55d2e0fb2dc630995ff3f93dac3f012a
+#    url: jdbc:postgres://127.0.0.1:5432/postgres
+#    username: nidhibajaj
+#    password: nidhibajaj
     hikari:
       schema: public
   jpa:

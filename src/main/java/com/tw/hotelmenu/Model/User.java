@@ -19,10 +19,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column(name = "email", nullable = false)
     private String emailId;
+
     @Column(name = "name", nullable = false)
     private String name;
+
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "role", nullable = false)
+    private String role = "USER";
 }

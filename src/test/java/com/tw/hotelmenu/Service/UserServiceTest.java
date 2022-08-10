@@ -11,23 +11,26 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
+    @Mock
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     private UserService userService;
 
     @BeforeEach
     void setUp()
     {
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, bCryptPasswordEncoder);
     }
 
     @Test
@@ -58,5 +61,25 @@ class UserServiceTest {
                 ()->userService.loadUserByUsername("email@example.com"));
 
         assertEquals("No User exists with Username : email@example.com", actualException.getMessage());
+    }
+
+    @Test
+    void shouldSaveNewUser()
+    {
+        User userToBeCreated = new User("name",
+                "email@example.com",
+                "encoded-password");
+
+        User expectedUser = new User("name",
+                "email@example.com",
+                "encoded-password");
+
+        when(userRepository.save(userToBeCreated)).thenReturn(expectedUser);
+        when(bCryptPasswordEncoder.encode("password")).thenReturn("encoded-password");
+
+        User actualUser = userService.save("name", "email@example.com", "password");
+
+        assertEquals(expectedUser,actualUser);
+        verify(userRepository, times(1)).save(userToBeCreated);
     }
 }

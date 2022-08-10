@@ -27,7 +27,7 @@ public class UserDetailsDTO implements UserDetails {
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
         simpleGrantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
 
-        return new UserDetailsDTO(user.getEmailId(), user.getPassword(), simpleGrantedAuthorities);
+        return new UserDetailsDTO(user.getEmail(), user.getPassword(), simpleGrantedAuthorities);
     }
 
     @Override

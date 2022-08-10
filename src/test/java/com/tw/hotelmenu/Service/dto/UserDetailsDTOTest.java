@@ -15,7 +15,7 @@ class UserDetailsDTOTest {
     @Test
     void shouldCreateUserDTOfromUser(){
 
-        User user = User.builder().name("john doe").emailId("john@abc.com").password("abcd").role("USER").build();
+        User user = User.builder().name("john doe").email("john@abc.com").password("abcd").role("USER").build();
 
         UserDetails userDetails = UserDetailsDTO.create(user);
 

@@ -16,12 +16,12 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "email", nullable = false)
-    private String emailId;
+    private String email;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -29,6 +29,12 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Builder.Default
     @Column(name = "role", nullable = false)
     private String role = "USER";
+
+
+
+
 }
+

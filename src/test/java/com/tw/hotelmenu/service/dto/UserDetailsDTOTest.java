@@ -1,6 +1,6 @@
-package com.tw.hotelmenu.Service.dto;
+package com.tw.hotelmenu.service.dto;
 
-import com.tw.hotelmenu.Model.User;
+import com.tw.hotelmenu.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

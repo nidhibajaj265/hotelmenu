@@ -1,9 +1,11 @@
-package com.tw.hotelmenu.Controller;
+package com.tw.hotelmenu.controller;
 
+import com.tw.hotelmenu.controller.controllerHelper.ControllerHelper;
+import com.tw.hotelmenu.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,9 +13,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = HomeController.class)
-class HomeControllerTest {
+class HomeControllerTest extends ControllerHelper {
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Test
     void shouldShowWelcomeMessage() throws Exception {

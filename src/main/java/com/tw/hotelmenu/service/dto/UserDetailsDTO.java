@@ -1,7 +1,6 @@
-package com.tw.hotelmenu.Service.dto;
+package com.tw.hotelmenu.service.dto;
 
-import com.tw.hotelmenu.Model.User;
-import lombok.Builder;
+import com.tw.hotelmenu.model.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

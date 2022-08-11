@@ -1,16 +1,16 @@
-package com.tw.hotelmenu.Configuration;
+package com.tw.hotelmenu.configuration;
 
+import com.tw.hotelmenu.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class HotelMenuConfig {
+public class BeanConfiguration {
 
     @Bean
-    public PasswordEncoder passwordEncoder()
-    {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

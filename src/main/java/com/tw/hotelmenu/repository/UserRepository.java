@@ -1,10 +1,9 @@
-package com.tw.hotelmenu.Repository;
+package com.tw.hotelmenu.repository;
 
-import com.tw.hotelmenu.Model.User;
+import com.tw.hotelmenu.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

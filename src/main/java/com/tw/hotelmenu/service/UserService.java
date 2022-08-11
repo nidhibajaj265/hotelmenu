@@ -1,9 +1,8 @@
-package com.tw.hotelmenu.Service;
-
-import com.tw.hotelmenu.Model.User;
-import com.tw.hotelmenu.Repository.UserRepository;
-import com.tw.hotelmenu.Service.dto.UserDetailsDTO;
-import lombok.AllArgsConstructor;
+package com.tw.hotelmenu.service;
+import com.tw.hotelmenu.model.User;
+import com.tw.hotelmenu.repository.UserRepository;
+import com.tw.hotelmenu.service.dto.UserDetailsDTO;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,12 +11,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-public class UserService implements UserDetailsService {
-
+public class UserService implements UserDetailsService{
 
     private final UserRepository userRepository;
+
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username)

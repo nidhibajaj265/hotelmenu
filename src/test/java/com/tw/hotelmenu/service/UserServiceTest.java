@@ -1,8 +1,8 @@
-package com.tw.hotelmenu.Service;
+package com.tw.hotelmenu.service;
 
-import com.tw.hotelmenu.Model.User;
-import com.tw.hotelmenu.Repository.UserRepository;
-import com.tw.hotelmenu.Service.dto.UserDetailsDTO;
+import com.tw.hotelmenu.model.User;
+import com.tw.hotelmenu.repository.UserRepository;
+import com.tw.hotelmenu.service.dto.UserDetailsDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

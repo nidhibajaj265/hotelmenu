@@ -1,6 +1,6 @@
-package com.tw.hotelmenu.Repository;
+package com.tw.hotelmenu.repository;
 
-import com.tw.hotelmenu.Model.MenuItem;
+import com.tw.hotelmenu.model.MenuItem;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

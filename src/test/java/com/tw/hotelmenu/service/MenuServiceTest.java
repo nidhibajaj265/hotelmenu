@@ -1,7 +1,7 @@
-package com.tw.hotelmenu.Service;
+package com.tw.hotelmenu.service;
 
-import com.tw.hotelmenu.Model.MenuItem;
-import com.tw.hotelmenu.Repository.MenuItemRepository;
+import com.tw.hotelmenu.model.MenuItem;
+import com.tw.hotelmenu.repository.MenuItemRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

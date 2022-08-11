@@ -1,7 +1,7 @@
-package com.tw.hotelmenu.Service;
+package com.tw.hotelmenu.service;
 
-import com.tw.hotelmenu.Model.MenuItem;
-import com.tw.hotelmenu.Repository.MenuItemRepository;
+import com.tw.hotelmenu.model.MenuItem;
+import com.tw.hotelmenu.repository.MenuItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 public class MenuService {
 
     @Autowired
-    MenuItemRepository menuItemRepository;
+    private MenuItemRepository menuItemRepository;
 
     public List<MenuItem> getMenuItems()
     {

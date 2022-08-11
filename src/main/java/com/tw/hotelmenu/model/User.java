@@ -1,4 +1,4 @@
-package com.tw.hotelmenu.Model;
+package com.tw.hotelmenu.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

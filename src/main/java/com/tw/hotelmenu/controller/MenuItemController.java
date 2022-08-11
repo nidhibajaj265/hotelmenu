@@ -1,10 +1,9 @@
-package com.tw.hotelmenu.Controller;
+package com.tw.hotelmenu.controller;
 
-import com.tw.hotelmenu.Model.MenuItem;
-import com.tw.hotelmenu.Service.MenuService;
-import lombok.AllArgsConstructor;
+import com.tw.hotelmenu.model.MenuItem;
+import com.tw.hotelmenu.service.MenuService;
+import com.tw.hotelmenu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

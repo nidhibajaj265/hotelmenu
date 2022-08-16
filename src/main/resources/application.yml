@@ -1,4 +1,7 @@
 spring:
+  data:
+    rest:
+      base-path: /api
   datasource:
      driverClassName: org.postgresql.Driver
      url: jdbc:postgresql://ec2-3-208-79-113.compute-1.amazonaws.com:5432/df97dd75a5h1pe
